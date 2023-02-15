@@ -26,11 +26,12 @@ jobs:
                     docker-googletts \
                     docker-tinypng \
                     docker-centos \
+                    docker-lsyncd \
+                    docker-debian-bullseye \
                     happ \
                     drupal-module-update-checker \
-                    docker-debian-base \
                     docker-ubuntu-amd \
-                    docker-debian-bullseye
+                    docker-debian-base
         do
           git clone "https://lnxd:${GH_TOKEN}@github.com/lnxd/$repo.git"
           cd "$(basename $repo .git)"
