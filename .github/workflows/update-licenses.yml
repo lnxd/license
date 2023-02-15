@@ -19,8 +19,7 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.TOKEN }}
       run: |
-        for repo in docker-github-backup \
-                    docker-xmrig \
+        for repo in docker-xmrig \
                     docker-xmrig-builder \
                     docker-ghosttheme \
                     docker-googletts \
