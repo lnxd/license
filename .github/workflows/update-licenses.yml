@@ -14,10 +14,6 @@ jobs:
         ref: main
         repository: ${{ github.repository }}
         token: ${{ secrets.TOKEN }}
-        
-    - name: Print runner PWD
-      run: |
-        echo $PWD
 
     - name: Update licenses in other repositories
       env:
@@ -43,7 +39,7 @@ jobs:
           git checkout main
           git pull origin main
           git checkout -b update-license
-          cp -f /home/runner/work/license/license/LICENSE.md .
+          cp -f /home/runner/work/license/license/LICENSE.txt .
           git add .
           if [[ -z $(git diff-index HEAD) ]]; then
             echo "Working tree is clean, no changes to commit."
