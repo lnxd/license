@@ -1,0 +1,52 @@
+name: Update Licenses
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  update-policies:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout current repository
+      uses: actions/checkout@v3
+      with:
+        ref: main
+        repository: ${{ github.repository }}
+        token: ${{ secrets.TOKEN }}
+
+    - name: Update licenses in other repositories
+      env:
+        GH_TOKEN: ${{ secrets.TOKEN }}
+      run: |
+        for repo in docker-github-backup \
+                    docker-xmrig \
+                    docker-xmrig-builder \
+                    docker-ghosttheme \
+                    docker-googletts \
+                    docker-tinypng \
+                    docker-centos \
+                    happ \
+                    drupal-module-update-checker \
+                    docker-debian-base \
+                    docker-ubuntu-amd \
+                    docker-debian-bullseye
+        do
+          git clone "https://lnxd:${GH_TOKEN}@github.com/lnxd/$repo.git"
+          cd "$(basename $repo .git)"
+          git config --global user.email "48756329+lnxd@users.noreply.github.com"
+          git config --global user.name "lnxd"
+          git checkout main
+          git pull origin main
+          git checkout -b update-license
+          cp -f /home/runner/work/license/license/LICENSE.md .
+          git add .
+          if [[ -z $(git diff-index HEAD) ]]; then
+            echo "Working tree is clean, no changes to commit."
+          else
+            git commit -m "Updated license"
+            git push --force --set-upstream origin update-license
+            gh pr create --title "Update license" --body "PR to update license" --base main --head update-license --repo "lnxd/$repo"
+          fi
+          cd ..
+        done
