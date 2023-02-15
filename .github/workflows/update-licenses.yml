@@ -21,10 +21,6 @@ jobs:
       run: |
         for repo in docker-xmrig \
                     docker-xmrig-builder \
-                    docker-ghosttheme \
-                    docker-googletts \
-                    docker-tinypng \
-                    docker-centos \
                     docker-lsyncd \
                     docker-debian-bullseye \
                     happ \
