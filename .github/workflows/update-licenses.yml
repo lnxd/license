@@ -23,6 +23,7 @@ jobs:
                     docker-xmrig-builder \
                     docker-lsyncd \
                     docker-debian-bullseye \
+                    basic-ai \
                     happ \
                     drupal-module-update-checker \
                     docker-ubuntu-amd \
