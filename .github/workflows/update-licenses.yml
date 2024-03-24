@@ -23,11 +23,12 @@ jobs:
                     docker-xmrig-builder \
                     docker-lsyncd \
                     docker-debian-bullseye \
-                    basic-ai \
+                    privacy-scripts \
                     happ \
                     drupal-module-update-checker \
                     docker-ubuntu-amd \
-                    docker-debian-base
+                    docker-debian-base \
+                    docker-slrp
         do
           git clone "https://lnxd:${GH_TOKEN}@github.com/lnxd/$repo.git"
           cd "$(basename $repo .git)"
