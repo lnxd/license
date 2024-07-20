@@ -28,7 +28,8 @@ jobs:
                     drupal-module-update-checker \
                     docker-ubuntu-amd \
                     docker-debian-base \
-                    docker-slrp
+                    docker-slrp \
+                    ocd-compare
         do
           git clone "https://lnxd:${GH_TOKEN}@github.com/lnxd/$repo.git"
           cd "$(basename $repo .git)"
