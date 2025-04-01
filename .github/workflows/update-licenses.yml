@@ -19,17 +19,14 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.TOKEN }}
       run: |
-        for repo in docker-xmrig \
-                    docker-xmrig-builder \
-                    docker-lsyncd \
-                    docker-debian-bullseye \
+        for repo in docker-debian-bullseye \
                     privacy-scripts \
-                    happ \
                     drupal-module-update-checker \
                     docker-ubuntu-amd \
                     docker-debian-base \
                     docker-slrp \
-                    ocd-compare
+                    ocd-verify \
+                    atmega8535-gate-controller
         do
           git clone "https://lnxd:${GH_TOKEN}@github.com/lnxd/$repo.git"
           cd "$(basename $repo .git)"
